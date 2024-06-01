@@ -1,8 +1,9 @@
 export default function legalAge(field) {
     const dateOfBirth = new Date(field.value);
-    validateAge(dateOfBirth);
-
-    console.log(validateAge(dateOfBirth))
+    
+    if(!validateAge(dateOfBirth)) {
+        field.setCustomValidity('O usuário não é maior de idade.');
+    }
 }
 
 function validateAge(dateOfBirth) {

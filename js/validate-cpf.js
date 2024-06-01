@@ -2,9 +2,7 @@ export default function validateCPF(field) {
     const cpf = field.value.replace(/\.|-/g, "");
     console.log(cpf);
     if (validateRepeatedNumbers(cpf) || validateFirstNumber(cpf) || validateSecondNumber(cpf)){
-        console.log('Este CPF não existe');
-    } else {
-        console.log('Existe!');
+        field.setCustomValidity('Este CPF não é válido.');
     }
 }
 
