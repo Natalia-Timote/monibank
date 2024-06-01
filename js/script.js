@@ -1,6 +1,23 @@
 import validateCPF from "./validate-cpf.js";
 import legalAge from "./validate-age.js";
 const formFields = document.querySelectorAll("[required]");
+const form = document.querySelector('[data-formulario]');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const listAnswers = {
+        'nome': e.target.elements['nome'].value,
+        'email': e.target.elements['email'].value,
+        'rg': e.target.elements['rg'].value,
+        'cpf': e.target.elements['cpf'].value,
+        'aniversario': e.target.elements['aniversario'].value,
+    }
+
+    localStorage.setItem('cadastro', JSON.stringify(listAnswers));
+
+    window.location.href = './abrir-conta-form-2.html';
+})
 
 formFields.forEach((field) => {
     field.addEventListener('blur', () => checkField(field));
